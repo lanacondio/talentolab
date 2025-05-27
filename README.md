@@ -1,12 +1,17 @@
-# React + Vite
+Wild Urban Sport
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Funcionalidad:
+Para ingresar se puede ir al link de ingresar y acceder con cualquier mail de formato valido y contraseña.
+El usuario que aparece es un mock obtenido de mockapi.
 
-Currently, two official plugins are available:
+Instalación:
+Una vez clonado el repositorio, correr "npm install" a la altura del package.json y luego "npm run dev"
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Pendientes:
+Iconografía y estilos en general.
+Mantener estados tanto de autenticación como de carrito
+Pantalla de contenido principal.
+Integración con panel de pagos
+Mejorar galería principal.
+Agregar datos de disponibilidad en ficha
+Integración del formulario de contacto
