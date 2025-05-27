@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../context/CartContext';
-import ProductCard from '../components/ProductCard';
 import { Table, Button, Container } from 'react-bootstrap';
 
 
 function Cart() {
 
-  const {cart, deleteCart, removeFromCart, calculateTotal} = useContext(CartContext);
+  const {cart, removeFromCart} = useContext(CartContext);
 
   const [items, setItems] = useState(cart.map(product => ({ ...product, quantity: 1 })));
 
@@ -26,7 +25,7 @@ function Cart() {
   };
 
    const handleCheckout = () => {
-    alert('Procesando pago...'); // Aquí puedes integrar un sistema real 
+    alert('Procesando pago...');  
   };
 
   

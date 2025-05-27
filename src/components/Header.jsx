@@ -1,6 +1,5 @@
 
 import NavBar from "./AppNavBar";
-import Social from "./Social";
 
 function Header() {  
     return (  

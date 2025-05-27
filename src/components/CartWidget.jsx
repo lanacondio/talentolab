@@ -1,13 +1,12 @@
-import React, { useContext, useState } from 'react';
+import { useContext,  } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell ,faCoffee} from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
  
 
 function CartWidget() {
 
-  const {cart, deleteCart} = useContext(CartContext);
+  const {cart} = useContext(CartContext);
 const navigate = useNavigate();
   function handleCart(){
     navigate('/cart');

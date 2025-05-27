@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { useContext } from 'react';
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
 function Details() {  

@@ -1,5 +1,5 @@
 import { CartContext } from '../context/CartContext';
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {  
@@ -64,8 +64,7 @@ const handleSubmit = async (e) => {
             <div>                
               
             <input  className="input-form" data-pass-auth=""   placeholder="Password" data-required-text="Este campo es obligatorio."
-     required="" type="password" 
-          onChange={e => setPassword(e.target.value)}></input>
+             required="" type="password" onChange={e => setPassword(e.target.value)}></input>
             </div>
 
             <button type="submit" id="iniciar-sesion" className="btn btn-block btn-primary">
