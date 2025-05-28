@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
+import { Spinner } from 'react-bootstrap';
 
 
 function Listing() {  
@@ -22,7 +23,10 @@ function Listing() {
         });
     }, []);
   
-    if(cargando) return (<p className='loading'>cargando catálogo</p>);
+    if(cargando) return (<div className="d-flex justify-content-center p-4">
+      <Spinner animation="border" role="status" />
+    </div>);
+    
   if(error) return (<p className='error'>Error al cargar los productos. Intente más tarde</p>);
 
   

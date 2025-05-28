@@ -1,6 +1,7 @@
 import { CartContext } from '../context/CartContext';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 
 function Login() {  
 
@@ -37,7 +38,9 @@ const handleSubmit = async (e) => {
      setLoading(false);
   };
 
-  if(loading) return (<p className='loading'>Ingresando</p>);
+  if(loading) return (<div className="d-flex justify-content-center p-4">
+      <Spinner animation="border" role="status" />
+    </div>);
   if(error){return (<p className='error'>Error al realizar login. Intente más tarde</p>)}
 
   return (
