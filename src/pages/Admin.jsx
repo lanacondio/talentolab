@@ -1,6 +1,8 @@
 import { CartContext } from '../context/CartContext';
 import { useContext } from 'react';
 import { Card } from "react-bootstrap";
+import {Button}  from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 function Admin() {  
@@ -22,11 +24,14 @@ function Admin() {
     <span><strong >{user.email}</strong></span>
     </Card.Title>
     
-    <Card.Text><span >creado el: {user.createdAt}</span>
-    
+    <Card.Text><span >creado el: {user.createdAt}</span>    
     </Card.Text>
+    <Button variant="dark" size="lg" >
+              <Link to="/publish" className="nav-link">Agregar producto</Link>          
+        </Button>
   </Card.Body>
 </Card>
+
     </>
    
 

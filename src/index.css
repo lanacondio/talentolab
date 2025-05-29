@@ -92,7 +92,25 @@ button:focus-visible {
     min-height: 216px;
 }
 
+.form-publish{
+  margin-top: 20px;
+  width: 373px;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, .1607843137);    
+    min-height: 325px;
+}
+
 .form-auth .btn-primary{
+  background-color: black;
+  border: black;
+  float: right;
+  margin-top: 10px;
+
+}
+
+.form-publish .btn-primary{
   background-color: black;
   border: black;
   float: right;
@@ -102,7 +120,6 @@ button:focus-visible {
 
 .form-auth .text-area{
   min-height: 200px;
-
 }
 
 .form-auth .btn-primary:hover{

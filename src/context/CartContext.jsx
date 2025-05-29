@@ -12,6 +12,7 @@ function CartProvider ({children}){
 
     const login= (user) => {
         setIsAuthenticated(true)
+        localStorage.setItem('authToken',user.name);
         setUser(user);
     }          
 

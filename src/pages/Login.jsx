@@ -28,11 +28,12 @@ const handleSubmit = async (e) => {
     });
 
     const data = await response.json();
+    console.log(data)
     login(data);
     navigate('/admin');  
   } catch (error) {    
     console.error('Error:', error);
-    setError("Hubo un problema en la carga de productos");          
+    setError("Hubo un problema en el login");          
   }
 
      setLoading(false);

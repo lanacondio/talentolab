@@ -12,6 +12,7 @@ import Cart from './pages/Cart';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import { CartContext } from './context/CartContext';
+import Publish from './pages/Publish';
 
 function App() {  
 
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/contact" element={<Contact />}></Route>
                 <Route path="/cart" element={isAuthenticated? <Cart /> : <Navigate to="/login" replace/>}></Route>
                 <Route path="/admin" element={ isAuthenticated ? <Admin /> : <Navigate to="/login" replace/>}></Route>
+                <Route path="/publish" element={ isAuthenticated ? <Publish /> : <Navigate to="/login" replace/>}></Route>
               </Routes>
               <Footer />  
                                  

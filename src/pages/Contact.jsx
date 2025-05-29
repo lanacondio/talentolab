@@ -22,7 +22,7 @@ function Contact() {
             required="" type="email" ></input>
             </div>
 
-            <div class="@Html.MaterialCssClass(Model.Login.Password)">                
+            <div >                
               
             <input  className="input-form text-area"    placeholder="Comentario" data-required-text="Este campo es obligatorio."
      required="" type="text"></input>
