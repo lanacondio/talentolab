@@ -14,15 +14,15 @@ import Contact from './pages/Contact';
 import { CartContext } from './context/CartContext';
 import Publish from './pages/Publish';
 
+
 function App() {  
 
   const {isAuthenticated} = useContext(CartContext);
   
     return (  
            <Router>
-           
-              <Header />              
-              <Gallery />             
+           <div className="d-flex flex-column min-vh-100">
+              <Header />               
               <Routes>
                 <Route path="/" element={<Main /> }></Route>
                 <Route path="/products" element={<Listing />}></Route>
@@ -35,7 +35,7 @@ function App() {
                 <Route path="/publish" element={ isAuthenticated ? <Publish /> : <Navigate to="/login" replace/>}></Route>
               </Routes>
               <Footer />  
-                                 
+                                 </div>
             </Router>
     );  
 }  

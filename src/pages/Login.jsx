@@ -1,95 +1,92 @@
-import { CartContext } from '../context/CartContext';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Spinner } from 'react-bootstrap';
+import { Spinner, Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
+import { CartContext } from '../context/CartContext';
 
-function Login() {  
-
+function Login() {
   const navigate = useNavigate();
-    const {login} = useContext(CartContext);
+  const { login } = useContext(CartContext);
+
   const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    
+  const [password, setPassword] = useState('');
+  
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-
-const handleSubmit = async (e) => {
-    
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
-     try {
-    const response = await fetch('https://682159b9259dad2655af008a.mockapi.io/api/v1/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+    try {
+      const response = await fetch('https://682159b9259dad2655af008a.mockapi.io/api/v1/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-    const data = await response.json();
-    console.log(data)
-    login(data);
-    navigate('/admin');  
-  } catch (error) {    
-    console.error('Error:', error);
-    setError("Hubo un problema en el login");          
-  }
+      const data = await response.json();
 
-     setLoading(false);
+      if (!response.ok) throw new Error(data?.message || 'Login fallido');
+
+      login(data);
+      navigate('/admin');
+    } catch (error) {
+      console.error('Error:', error);
+      setError("Hubo un problema al iniciar sesión. Verificá tus datos.");
+    }
+
+    setLoading(false);
   };
 
-  if(loading) return (<div className="d-flex justify-content-center p-4">
-      <Spinner animation="border" role="status" />
-    </div>);
-  if(error){return (<p className='error'>Error al realizar login. Intente más tarde</p>)}
-
   return (
-    <>
+    <Container className="py-5">
+      <Row className="justify-content-center">
+        <Col md={6} lg={5}>
+          <Card className="shadow-sm p-4">
+            <h3 className="text-center mb-3">Iniciar Sesión</h3>
+            <p className="text-center text-muted mb-4">
+              Accedé a tu cuenta para administrar productos o realizar compras
+            </p>
 
-    <div className="container main-auth">
-    <div className="row">
-        <div className="col-md-4"></div>    
-        <div className="col-md-4">
-               <div className="form-auth" data-auth-container>
-        <p className="form-title">Inicia sesión</p>        
-      
-        <form method="Post" className="form" onSubmit={handleSubmit}>
-          <div >     
+            {error && <Alert variant="danger">{error}</Alert>}
 
-            <input className="input-form" placeholder="Email" data-pattern-text="El valor debe ser un email válido" 
-            data-required-text="Este campo es obligatorio." 
-            data-typemismatch-text="El valor debe ser un email válido" 
-             pattern="^([\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4})?$" 
-            required="" 
-          onChange={e => setEmail(e.target.value)} type="email" ></input>
-            </div>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Ingresá tu email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-            <div>                
-              
-            <input  className="input-form" data-pass-auth=""   placeholder="Password" data-required-text="Este campo es obligatorio."
-             required="" type="password" onChange={e => setPassword(e.target.value)}></input>
-            </div>
+              <Form.Group className="mb-4" controlId="formPassword">
+                <Form.Label>Contraseña</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Ingresá tu contraseña"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-            <button type="submit" id="iniciar-sesion" className="btn btn-block btn-primary">
-                Login
-            </button>
+              <div className="d-grid">
+                <Button variant="dark" type="submit" disabled={loading}>
+                  {loading ? <Spinner size="sm" animation="border" /> : 'Ingresar'}
+                </Button>
+              </div>
+            </Form>
 
-        </form>
-        
-    </div>
-            </div>    
-        <div className="col-md-4"></div>    
-        
-    </div>   
-    
+           
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  );
+}
 
- 
-    </div>
-    </>
-   
-      );
-}  
-
-
-export default Login;  
+export default Login;

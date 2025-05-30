@@ -2,26 +2,46 @@ import {NavLink, Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Social from "./Social";
 import CartWidget from "./CartWidget";
+import {Container} from "react-bootstrap";
 
 function AppNavBar() {  
     return (  
-        <Navbar bg="light" expand="lg">        
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">                           
-            
-            <NavLink to="/login" className="nav-link">Ingresar</NavLink>            
-            <NavLink to="/about" className="nav-link">Sobre Nosotros</NavLink>
-            <NavLink to="/products" className="nav-link">Productos</NavLink>
-            <NavLink to="/contact" className="nav-link">Contacto</NavLink>            
-            <NavLink to="/admin" className="nav-link">Administrar</NavLink>         
-            <Social />
-          </Nav>
-        </Navbar.Collapse>
-        
-        <Navbar.Brand >
-        <CartWidget />
+  <Navbar bg="light" expand="lg" sticky="top" className="shadow-sm">
+      <Container>
+        {/* Logo o botón a Home */}
+         <img src={"src/img/brand_icon.jpg"} width={"40px"} style={{marginRight:"20px"}}  />         
+        <Navbar.Brand as={Link} to="/" className="fw-bold text-dark">
+          Wild Urban Sport
         </Navbar.Brand>
-      </Navbar>
+
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <NavLink to="/products" className="nav-link">
+              Productos
+            </NavLink>
+            <NavLink to="/about" className="nav-link">
+              Sobre Nosotros
+            </NavLink>
+            <NavLink to="/contact" className="nav-link">
+              Contacto
+            </NavLink>           
+            <NavLink to="/admin" className="nav-link">
+              Ingresar
+            </NavLink>
+          </Nav>
+
+          {/* Social icons y carrito a la derecha */}
+          <div className="d-flex align-items-center gap-3">
+            <Social />
+            <Link to="/cart" className="nav-link p-0">
+              <CartWidget />
+            </Link>
+          </div>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
 
     );  
 }  

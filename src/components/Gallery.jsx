@@ -14,6 +14,8 @@ function Gallery() {
             {images.map((src, index) => (  
                 <img key={index} src={src} alt={`Imagen ${index + 1}`} style={{ width: "10%" }} />  
             ))}  
+
+ 
         </section>  
     );  
 }  

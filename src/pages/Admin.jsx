@@ -1,42 +1,47 @@
 import { CartContext } from '../context/CartContext';
 import { useContext } from 'react';
-import { Card } from "react-bootstrap";
-import {Button}  from 'react-bootstrap';
+import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-
-function Admin() {  
-
-  const {getUser} = useContext(CartContext);
-
-  let user =  getUser();
-  
+function Admin() {
+  const { getUser } = useContext(CartContext);
+  const user = getUser();
 
   return (
-    <>
-    
-   <div className='admin-hello'>Hola! {user.name}</div> 
+    <Container className="py-5">
+      <Row className="justify-content-center">
+        <Col md={8} lg={6}>
+          <div className="text-center mb-4">
+            <h2 className="fw-bold">¡Hola, {user.name}!</h2>
+            <p className="text-muted">Bienvenido al panel de administración</p>
+          </div>
 
-   <Card style={{with:'20rem'}} className="shadow border-0 admin-body">
-  <Card.Img variant="top" className="card-image" src={user.avatar} />
-  <Card.Body>
-    <Card.Title><span >{user.name}</span>
-    <span><strong >{user.email}</strong></span>
-    </Card.Title>
-    
-    <Card.Text><span >creado el: {user.createdAt}</span>    
-    </Card.Text>
-    <Button variant="dark" size="lg" >
-              <Link to="/publish" className="nav-link">Agregar producto</Link>          
-        </Button>
-  </Card.Body>
-</Card>
+          <Card className="shadow-sm border-0 text-center">
+            <Card.Img
+              variant="top"
+              src={user.avatar}
+              alt={user.name}
+              style={{
+                maxHeight: '250px',
+                objectFit: 'cover',
+              }}
+            />
+            <Card.Body>
+              <Card.Title className="mb-2">{user.name}</Card.Title>
+              <Card.Subtitle className="mb-3 text-muted">{user.email}</Card.Subtitle>
+              <Card.Text className="text-muted">Cuenta creada el: {new Date(user.createdAt).toLocaleDateString()}</Card.Text>
 
-    </>
-   
+              <Link to="/publish">
+                <Button variant="dark" size="lg">
+                  + Agregar nuevo producto
+                </Button>
+              </Link>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  );
+}
 
-      );
-}  
-
-
-export default Admin;  
+export default Admin;
