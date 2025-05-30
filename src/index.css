@@ -238,7 +238,8 @@ background-color: black;
  .hero-video-container {
   position: relative;
   height: 80vh;
-  min-height: 400px;
+  min-height: 100px;
+  max-height: 500px;
   overflow: hidden;
   display: flex;
   align-items: center;

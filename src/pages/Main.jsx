@@ -8,7 +8,7 @@ function Main() {
         <main style={{ padding: "20px", textAlign:"center" }}>  
 
         
-        <div className="position-relative bg-dark text-white text-center overflow-hidden hero-video-container" style={{ height: '80vh' }}>
+        <div className="position-relative bg-dark text-white text-center overflow-hidden hero-video-container" >
       <video
         autoPlay
         loop
