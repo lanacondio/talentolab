@@ -31,9 +31,9 @@ function Admin() {
               <Card.Subtitle className="mb-3 text-muted">{user.email}</Card.Subtitle>
               <Card.Text className="text-muted">Cuenta creada el: {new Date(user.createdAt).toLocaleDateString()}</Card.Text>
 
-              <Link to="/publish">
+              <Link to="/publish-listing">
                 <Button variant="dark" size="lg">
-                  + Agregar nuevo producto
+                  + Editar Catálogo
                 </Button>
               </Link>
             </Card.Body>

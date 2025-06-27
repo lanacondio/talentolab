@@ -2,6 +2,8 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Spinner, Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 import { CartContext } from '../context/CartContext';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/ReactToastify.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -34,6 +36,7 @@ function Login() {
     } catch (error) {
       console.error('Error:', error);
       setError("Hubo un problema al iniciar sesión. Verificá tus datos.");
+      toast.error("Hubo un problema al iniciar sesión. Verificá tus datos.");  
     }
 
     setLoading(false);
@@ -84,7 +87,8 @@ function Login() {
            
           </Card>
         </Col>
-      </Row>
+      </Row>      
+      <ToastContainer />
     </Container>
   );
 }

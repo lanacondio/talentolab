@@ -1,5 +1,34 @@
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import  styled from 'styled-components';
+
+  const Div = styled.div`
+    position: relative;
+    z-index: 2;
+    padding: 1rem;
+  `
+
+  const DivHeroContainer = styled.div`
+
+  position: relative;
+  height: 80vh;
+  min-height: 100px;
+  max-height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  `
+
+  const DivOverlay = styled.div`
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  `
+
+
 
 function Main() {  
     return (  
@@ -8,7 +37,7 @@ function Main() {
         <main style={{ padding: "20px", textAlign:"center" }}>  
 
         
-        <div className="position-relative bg-dark text-white text-center overflow-hidden hero-video-container" >
+        <DivHeroContainer className="position-relative bg-dark text-white text-center overflow-hidden" >
       <video
         autoPlay
         loop
@@ -26,16 +55,16 @@ function Main() {
         Tu navegador no soporta el video.
       </video>
 
-     <div className="overlay" />
+     <DivOverlay />
 
-        </div>
-             <div className="bg-light py-5 text-center hero-content">
+        </DivHeroContainer>
+             <Div className="bg-light py-5 text-center hero-content">
         <h1 className="display-4 fw-bold">Ropa deportiva con estilo</h1>
         <p className="lead">Calzas, tops y camperas pensadas para rendir y destacar</p>
         <Button variant="dark" size="lg" >
               <Link to="/products" className="nav-link">Ver colección</Link>          
         </Button>
-      </div>
+      </Div>
 
 <Container className="py-5 bg-white">
         <h2 className="text-center mb-4">¿Por qué elegirnos?</h2>

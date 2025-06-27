@@ -1,12 +1,15 @@
-
 import NavBar from "./AppNavBar";
+import  styled from 'styled-components'
+
+const HeaderTag = styled.header`
+  background-color: #FFFF;  text-align: center; color: black;
+  `
 
 function Header() {  
     return (  
-        <header style={{ backgroundColor: "#FFFF", textAlign: "center", color: "black" }}>  
-            <NavBar />        
-           
-        </header>  
+        <HeaderTag >  
+            <NavBar />                   
+        </HeaderTag>  
     );  
 }  
 

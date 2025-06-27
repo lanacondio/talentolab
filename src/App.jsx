@@ -13,14 +13,21 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import { CartContext } from './context/CartContext';
 import Publish from './pages/Publish';
-
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 function App() {  
 
   const {isAuthenticated} = useContext(CartContext);
   
     return (  
-           <Router>
+      <HelmetProvider>
+         <Helmet>
+      <title> Wild urban sport </title>
+      <meta name="description" content="Calzas deportivas" />
+    </Helmet>
+
+   <Router>
+            
            <div className="d-flex flex-column min-vh-100">
               <Header />               
               <Routes>
@@ -33,10 +40,15 @@ function App() {
                 <Route path="/cart" element={isAuthenticated? <Cart /> : <Navigate to="/login" replace/>}></Route>
                 <Route path="/admin" element={ isAuthenticated ? <Admin /> : <Navigate to="/login" replace/>}></Route>
                 <Route path="/publish" element={ isAuthenticated ? <Publish /> : <Navigate to="/login" replace/>}></Route>
+                <Route path="/product-edit/:id" element={ isAuthenticated ? <Publish /> : <Navigate to="/login" replace/>}></Route>
+                 <Route path="/publish-listing" element={ isAuthenticated ? <Listing isCatalogo={true} /> : <Navigate to="/login" replace/>}></Route>
               </Routes>
               <Footer />  
-                                 </div>
+            </div>
             </Router>
+
+      </HelmetProvider>
+        
     );  
 }  
 export default App;  

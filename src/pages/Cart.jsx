@@ -1,6 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 import { Table, Button, Container } from 'react-bootstrap';
+import { FaWhatsapp } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/ReactToastify.css";
 
 
 function Cart() {
@@ -25,17 +28,14 @@ function Cart() {
   };
 
    const handleCheckout = () => {
-    alert('Procesando pago...');  
+    toast.success('Procesando pago...');  
   };
 
   
-  const total = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const total = items.reduce((acc, item) => acc + Number(item.price) * item.quantity, 0);
 
           return (
-    
-
-
-            <Container className="my-4">
+                <Container className="my-4">
       <h2>Tu Carrito</h2> 
            <img src={"src/img/cart-shopping-solid.svg"} width={"40px"} style={{float:'right', marginTop:"-40px"}} />
       {items.length === 0 ? (
@@ -56,7 +56,7 @@ function Cart() {
               {items.map(item => (
                 <tr key={item.id}>
                   <td>{item.name}</td>
-                  <td>${item.price.toFixed(2)}</td>
+                  <td>${Number(item.price).toFixed(2)}</td>
                   <td>
                     <Button
                       variant="outline-secondary"
@@ -87,8 +87,29 @@ function Cart() {
           <Button variant="primary" onClick={handleCheckout}>
             Pagar
           </Button>
+<Button
+  variant="outline-success"
+  className="btn-whatsapp mt-3 d-flex align-items-center justify-content-center gap-2 fw-bold"
+  style={{ borderColor: '#25D366', color: '#25D366' }}
+  onClick={() => {
+    const mensaje = items.map(item =>
+      `• ${item.name} x${item.quantity} = $${(Number(item.price) * item.quantity).toFixed(2)}`
+    ).join('\n') + `\n\nTotal: $${total.toFixed(2)}`;
+
+    const encoded = encodeURIComponent(`Hola! Quiero comprar:\n\n${mensaje}`);
+    window.open(`https://wa.me/5491137887299?text=${encoded}`, '_blank');
+  }}
+>
+ <FaWhatsapp size={20} color="#25D366" className="whatsapp-icon"
+  
+ />
+  Enviar pedido por WhatsApp
+</Button>
+          
         </>
       )}
+
+      <ToastContainer />
     </Container>
 
           );

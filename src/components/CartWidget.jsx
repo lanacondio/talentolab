@@ -2,7 +2,25 @@ import { useContext,  } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CartContext } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
- 
+import  styled from 'styled-components'
+
+const Image = styled.img`
+  width:40px;`
+
+  const Div = styled.div`
+    color: white;
+    margin-top: -37px;
+    font-size: 17px;
+    margin-left: 5px;
+    font-weight: bolder;
+`
+
+const DivCartWidget = styled.div`
+    position: relative;
+  cursor: pointer;
+  text-align: center;
+`
+
 
 function CartWidget() {
 
@@ -14,10 +32,10 @@ const navigate = useNavigate();
 
       return (
 
-       <div onClick={()=>handleCart()} className="cart-widget">  
-        <img src={"src/img/cart-shopping-solid.svg"} width={"40px"} />
-        <div className="qty-display">{cart.length}</div>
-       </div>
+       <DivCartWidget onClick={()=>handleCart()} >  
+        <Image src={"src/img/cart-shopping-solid.svg"} />
+        <Div>{cart.length}</Div>
+       </DivCartWidget>
       );
 }
 
